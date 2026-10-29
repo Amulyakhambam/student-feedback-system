@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153b35">
+  <title>Student Feedback System</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#home" aria-label="Campus Voice home"><span class="brand-mark">CV</span><span>Campus Voice<small>STUDENT FEEDBACK</small></span></a><button id="admin-toggle" class="button button-outline" type="button">Administrator</button></header>
+  <main class="page-wrap">
+    <section id="home-view" class="hero-grid">
+      <div class="intro"><p class="eyebrow">YOUR VOICE SHAPES THE CLASSROOM</p><h1>Help make every<br><em>class better.</em></h1><p class="lead">Share honest, constructive feedback about your course experience. Your input helps instructors understand what is working and where students need more support.</p><div class="trust"><span aria-hidden="true">✦</span><div><strong>Thoughtful feedback, real impact</strong><small>Submissions are reviewed by your academic team.</small></div></div><div class="step-row"><span>01 <small>SHARE</small></span><i></i><span>02 <small>REFLECT</small></span><i></i><span>03 <small>IMPROVE</small></span></div></div>
+      <section class="form-card" aria-labelledby="form-title"><div class="card-heading"><div><p class="eyebrow">COURSE REVIEW</p><h2 id="form-title">Tell us how it’s going</h2></div><span class="required-note">* Required</span></div>
+        <form id="feedback-form"><div class="field-grid"><label>Student name *<input name="studentName" required minlength="2" maxlength="100" autocomplete="name" placeholder="Your name"></label><label>Student email *<input name="studentEmail" type="email" required maxlength="254" autocomplete="email" placeholder="you@college.edu"></label><label>Course code *<input name="courseCode" required minlength="2" maxlength="20" placeholder="e.g. CSE101"></label><label>Instructor name *<input name="instructorName" required minlength="2" maxlength="100" placeholder="Instructor’s name"></label></div>
+          <fieldset class="rating-field"><legend>How would you rate this course? *</legend><div class="rating-options"><label><input type="radio" name="rating" value="1" required><span>1</span><small>Poor</small></label><label><input type="radio" name="rating" value="2"><span>2</span><small>Fair</small></label><label><input type="radio" name="rating" value="3"><span>3</span><small>Good</small></label><label><input type="radio" name="rating" value="4"><span>4</span><small>Very good</small></label><label><input type="radio" name="rating" value="5"><span>5</span><small>Excellent</small></label></div></fieldset>
+          <label>What’s working well, and what could improve? *<textarea name="comments" required minlength="10" maxlength="2000" rows="4" placeholder="Share specific, constructive feedback…"></textarea><small class="field-hint">Please keep feedback respectful. 10–2000 characters.</small></label>
+          <label class="consent"><input type="checkbox" name="confirm" required><span>I confirm this feedback is accurate and respectful.</span></label><button id="submit-button" class="button button-primary button-wide" type="submit">Submit feedback <span aria-hidden="true">→</span></button><p id="form-message" class="message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </section>
+    <section id="admin-view" class="admin-view" hidden><div class="admin-heading"><div><p class="eyebrow">ACADEMIC TEAM</p><h1>Feedback inbox</h1><p class="lead">Review student submissions and mark them as reviewed.</p></div><button id="logout-button" class="button button-outline" type="button" hidden>Sign out</button></div>
+      <form id="login-form" class="login-card" hidden><h2>Administrator sign in</h2><p>Use the administrator credentials configured in <code>backend/.env</code>.</p><label>Username<input name="username" required autocomplete="username"></label><label>Password<input name="password" type="password" required autocomplete="current-password"></label><button class="button button-primary" type="submit">Sign in</button><p id="login-message" class="message" role="status"></p></form>
+      <div id="inbox-panel" hidden><div class="inbox-tools"><label class="search-box">Search feedback<input id="search-input" type="search" placeholder="Name, course, instructor…"></label><label class="filter-box">Status<select id="status-filter"><option value="all">All submissions</option><option value="new">New</option><option value="reviewed">Reviewed</option></select></label><span id="result-count" class="result-count"></span></div><div id="feedback-list" class="feedback-list"></div></div>
+    </section>
+  </main>
+  <footer><span>Campus Voice <span class="dot">·</span> Student Feedback System</span><span>Constructive feedback builds stronger classrooms.</span></footer>
+</body>
+</html>
